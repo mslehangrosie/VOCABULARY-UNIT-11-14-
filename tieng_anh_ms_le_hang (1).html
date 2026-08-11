@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học Từ Vựng Tiếng Anh - Ms Lê Hằng English</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #4ea8de;
+            --primary-dark: #3a86ff;
+            --card-bg: #ffffff;
+            --text-main: #2b2d42;
+            --text-muted: #6c757d;
+            --accent-purple: #6a4c93;
+            --accent-coral: #ff5964;
+            --accent-yellow: #fff3bf;
+            --accent-yellow-border: #fcc419;
+            --pill-tab-active: #1d3557;
+            --pill-tab-inactive: #a8dadc;
+            --type-n: #ff922b;
+            --type-v: #51cf66;
+            --type-adj: #339af0;
+            --type-adv: #cc5de8;
+            --type-phrase: #ff6b6b;
+            --shadow-3d: 0 8px 0 rgba(0, 0, 0, 0.15);
+            --shadow-3d-active: 0 4px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Nunito', 'Fredoka', sans-serif;
+            background-color: #3a86ff;
+            /* Plus / Thập grid pattern background */
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.25) 2px, transparent 2.5px),
+                linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px, 30px 30px, 30px 30px;
+            background-position: 0 0, 15px 15px, 15px 15px;
+            color: var(--text-main);
+            padding: 20px 15px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 1. Header */
+        .header-box {
+            background: #ffffff;
+            border: 4px solid var(--accent-purple);
+            border-radius: 24px;
+            padding: 18px 25px;
+            text-align: center;
+            box-shadow: 0 8px 0 var(--accent-purple);
+            margin-bottom: 25px;
+            transform: translateY(0);
+            transition: transform 0.2s;
+        }
+
+        .header-box h1 {
+            color: var(--accent-purple);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* 2. Warning Box */
+        .warning-box {
+            background-color: #fff9db;
+            border: 3.5px solid var(--accent-yellow-border);
+            border-radius: 20px;
+            padding: 16px 20px;
+            text-align: center;
+            box-shadow: 0 6px 0 var(--accent-yellow-border);
+            margin-bottom: 25px;
+        }
+
+        .warning-title {
+            color: #e03131;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .warning-content {
+            color: #5c3c00;
+            font-weight: 700;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .warning-sub {
+            font-style: italic;
+            color: #d9480f;
+            margin-top: 6px;
+            font-weight: 800;
+        }
+
+        /* 3. Unit Selector */
+        .unit-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .unit-btn {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 18px;
+            border-radius: 18px;
+            border: 3px solid #00000015;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            background-color: var(--accent-yellow);
+            color: #5c3c00;
+            box-shadow: 0 5px 0 #e6b800;
+            text-transform: uppercase;
+        }
+
+        .unit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #e6b800;
+        }
+
+        .unit-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #e6b800;
+        }
+
+        .unit-btn.active {
+            background-color: var(--accent-coral);
+            color: #ffffff;
+            box-shadow: 0 5px 0 #c92a2a;
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .unit-btn.active:hover {
+            box-shadow: 0 7px 0 #c92a2a;
+        }
+
+        /* 4. Tab Navigation */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-btn.tab-1 {
+            background-color: var(--pill-tab-active);
+            color: #ffffff;
+            box-shadow: 0 5px 0 #0f1d2f;
+        }
+
+        .tab-btn.tab-1.active {
+            outline: 3px solid #ffffff;
+        }
+
+        .tab-btn.tab-2 {
+            background-color: var(--pill-tab-inactive);
+            color: #1d3557;
+            box-shadow: 0 5px 0 #457b9d;
+        }
+
+        .tab-btn.tab-2.active {
+            background-color: #1d3557;
+            color: #ffffff;
+            box-shadow: 0 5px 0 #0f1d2f;
+            outline: 3px solid #ffffff;
+        }
+
+        .tab-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* Search Bar & Stats */
+        .controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .search-input {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid #ced4da;
+            font-family: 'Nunito', sans-serif;
+            font-size: 14px;
+            outline: none;
+            width: 250px;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-purple);
+        }
+
+        .vocab-count {
+            font-weight: 700;
+            color: var(--accent-purple);
+            font-size: 15px;
+        }
+
+        /* 5. Vocabulary Cards Grid */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .vocab-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vocab-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Vocabulary Card Styling */
+        .vocab-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12), 0 10px 20px rgba(0,0,0,0.05);
+            border: 3px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 220px;
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 0 rgba(0, 0, 0, 0.12), 0 15px 25px rgba(0,0,0,0.08);
+        }
+
+        /* Type Badge */
+        .type-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--type-n);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            box-shadow: 0 3px 0 rgba(0,0,0,0.15);
+            text-transform: lowercase;
+        }
+
+        .type-badge.v { background-color: var(--type-v); }
+        .type-badge.adj { background-color: var(--type-adj); }
+        .type-badge.adv { background-color: var(--type-adv); }
+        .type-badge.phrase { background-color: var(--type-phrase); font-size: 10px; width: auto; padding: 0 8px; border-radius: 12px; }
+
+        .card-content {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .word-title {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--accent-purple);
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 4px;
+            word-break: break-word;
+        }
+
+        .phonetic {
+            color: #868e96;
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .meaning {
+            color: #212529;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .example-box {
+            background-color: #f8f9fa;
+            border-left: 3.5px solid var(--accent-purple);
+            padding: 8px 10px;
+            border-radius: 0 10px 10px 0;
+            font-size: 13px;
+            color: #495057;
+            font-style: italic;
+            line-height: 1.4;
+            margin-top: 6px;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 10px;
+            border-top: 1.5px dashed #e9ecef;
+        }
+
+        .audio-btn {
+            background-color: #e7f5ff;
+            color: #1c7ed6;
+            border: 2px solid #74c0fc;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #a5d8ff;
+            transition: all 0.1s ease;
+        }
+
+        .audio-btn:hover {
+            background-color: #d0ebff;
+            transform: scale(1.05);
+        }
+
+        .audio-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #a5d8ff;
+        }
+
+        .audio-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Quiz Tab Container */
+        .quiz-container {
+            display: none;
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 0 rgba(0,0,0,0.15);
+            border: 4px solid var(--accent-purple);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .quiz-header h2 {
+            color: var(--accent-purple);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .quiz-progress {
+            background-color: #e9ecef;
+            border-radius: 12px;
+            height: 14px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .quiz-progress-bar {
+            background-color: var(--accent-coral);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-card {
+            background-color: #f8f9fa;
+            border-radius: 16px;
+            padding: 20px;
+            border: 2px solid #e9ecef;
+            margin-bottom: 20px;
+        }
+
+        .question-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 15px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: white;
+            border: 2.5px solid #ced4da;
+            border-radius: 14px;
+            padding: 14px 18px;
+            text-align: left;
+            font-family: 'Nunito', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 0 4px 0 #ced4da;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary-dark);
+            background-color: #f0f7ff;
+        }
+
+        .option-btn.correct {
+            background-color: #d3f9d8 !important;
+            border-color: #40c057 !important;
+            color: #2b8a3e !important;
+            box-shadow: 0 4px 0 #40c057 !important;
+        }
+
+        .option-btn.wrong {
+            background-color: #ffe3e3 !important;
+            border-color: #fa5252 !important;
+            color: #c92a2a !important;
+            box-shadow: 0 4px 0 #fa5252 !important;
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .next-btn {
+            background-color: var(--accent-coral);
+            color: white;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 16px;
+            padding: 12px 24px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #c92a2a;
+        }
+
+        .next-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #c92a2a;
+        }
+
+        .score-board {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .score-board h3 {
+            font-size: 28px;
+            color: var(--accent-purple);
+            margin-bottom: 15px;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .restart-btn {
+            background-color: var(--primary-dark);
+            color: white;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 18px;
+            padding: 14px 28px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #1d3557;
+            margin-top: 15px;
+        }
+
+        .empty-msg {
+            grid-column: 1 / -1;
+            background: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-purple);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 1. Header trên cùng -->
+    <div class="header-box">
+        <h1>GIÁO VIÊN TẠO: MS LÊ HẰNG ENGLISH</h1>
+    </div>
+
+    <!-- 2. Hộp thông báo Warning Box -->
+    <div class="warning-box">
+        <div class="warning-title">
+            ⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️
+        </div>
+        <div class="warning-content">
+            Hãy ôn tập từ vựng thật kỹ trước khi làm bài kiểm tra trắc nghiệm! Nhấp vào biểu tượng loa 🔊 để nghe phát âm chuẩn Anh - Mỹ.
+            <div class="warning-sub">* Kéo tới đâu, làm tới đó! *</div>
+        </div>
+    </div>
+
+    <!-- 3. Thanh chuyển Unit (Unit Selector) -->
+    <div class="unit-selector" id="unitSelector">
+        <button class="unit-btn" onclick="selectUnit(7)">Unit 7: ON THE MOVE</button>
+        <button class="unit-btn" onclick="selectUnit(8)">Unit 8: THROUGH THE AGES</button>
+        <button class="unit-btn" onclick="selectUnit(9)">Unit 9: THE NATURAL WORLD</button>
+        <button class="unit-btn" onclick="selectUnit(10)">Unit 10: REACHING FOR THE SKIES</button>
+        <button class="unit-btn active" onclick="selectUnit(11)">Unit 11: DESIGN AND INNOVATION</button>
+        <button class="unit-btn" onclick="selectUnit(12)">Unit 12: INFORMATION TECHNOLOGY</button>
+        <button class="unit-btn" onclick="selectUnit(13)">Unit 13: THE MODERN WORLD</button>
+        <button class="unit-btn" onclick="selectUnit(14)">Unit 14: URBANISATION</button>
+    </div>
+
+    <!-- 4. Thanh chuyển Tab (Tab Navigation) -->
+    <div class="tab-nav">
+        <button class="tab-btn tab-1 active" id="tab1Btn" onclick="switchTab(1)">Tab 1: Giao Diện Từ Mới</button>
+        <button class="tab-btn tab-2" id="tab2Btn" onclick="switchTab(2)">Tab 2: Đề Thi Trắc Nghiệm (30 Câu)</button>
+    </div>
+
+    <!-- TAB 1 CONTENT: Vocabulary View -->
+    <div id="vocabTab">
+        <div class="controls-bar">
+            <span class="vocab-count" id="vocabCount">Đang tải từ vựng...</span>
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Tìm kiếm từ vựng..." oninput="filterVocab()">
+        </div>
+        <div class="vocab-grid" id="vocabGrid">
+            <!-- Vocabulary cards will be rendered dynamically -->
+        </div>
+    </div>
+
+    <!-- TAB 2 CONTENT: Quiz View -->
+    <div id="quizTab" class="quiz-container">
+        <div class="quiz-header">
+            <h2 id="quizUnitTitle">Đề Thi Trắc Nghiệm Unit 11</h2>
+            <div class="quiz-progress">
+                <div class="quiz-progress-bar" id="quizProgressBar"></div>
+            </div>
+            <div style="font-weight: 700; color: #6c757d;" id="quizQuestionCount">Câu 1 / 30</div>
+        </div>
+
+        <div id="quizContent">
+            <!-- Question content will be rendered here -->
+        </div>
+    </div>
+</div>
+
+<script>
+// VOCABULARY DATABASE (UNITS 7 TO 14 COMPLETE)
+const vocabularyData = {
+    7: {
+        title: "Unit 7: ON THE MOVE",
+        words: [
+            { word: "accommodation", type: "n", phonetic: "/əˌkɒm.əˈdeɪ.ʃən/", meaning: "Chỗ ở, tiện nghi ăn ở", example: "We found comfortable accommodation near the train station." },
+            { word: "commute", type: "v", phonetic: "/kəˈmjuːt/", meaning: "Đi lại thường xuyên giữa nhà và nơi làm việc", example: "She commutes to London by train every day." },
+            { word: "destination", type: "n", phonetic: "/ˌdestɪˈneɪʃən/", meaning: "Điểm đến, đích đến", example: "Paris is a popular tourist destination." },
+            { word: "expedition", type: "n", phonetic: "/ˌekspəˈdɪʃən/", meaning: "Cuộc thám hiểm", example: "They organised an expedition to the South Pole." },
+            { word: "itinerary", type: "n", phonetic: "/aɪˈtɪnərəri/", meaning: "Lịch trình chuyến đi", example: "We planned a detailed itinerary for our trip." },
+            { word: "passengers", type: "n", phonetic: "/ˈpæsɪndʒəz/", meaning: "Hành khách", example: "The plane carries over 300 passengers." },
+            { word: "public transport", type: "n", phonetic: "/ˈpʌblɪk ˈtrænspɔːt/", meaning: "Phương tiện giao thông công cộng", example: "Using public transport reduces pollution." },
+            { word: "traffic congestion", type: "n", phonetic: "/ˈtræfɪk kənˈdʒestʃən/", meaning: "Ún tắc giao thông", example: "Traffic congestion is a big problem in big cities." }
+        ]
+    },
+    8: {
+        title: "Unit 8: THROUGH THE AGES",
+        words: [
+            { word: "ancient", type: "adj", phonetic: "/ˈeɪnʃənt/", meaning: "Cổ xưa, lâu đời", example: "They found ancient coins in the cave." },
+            { word: "archaeology", type: "n", phonetic: "/ˌɑːkiˈɒlədʒi/", meaning: "Khảo cổ học", example: "He studied archaeology at university." },
+            { word: "artifact", type: "n", phonetic: "/ˈɑːtɪfækt/", meaning: "Cổ vật, hiện vật", example: "The museum displays gold artifacts." },
+            { word: "civilisation", type: "n", phonetic: "/ˌsɪvɪlaɪˈzeɪʃən/", meaning: "Nền văn minh", example: "Ancient Egyptian civilisation was remarkable." },
+            { word: "heritage", type: "n", phonetic: "/ˈherɪtɪdʒ/", meaning: "Di sản", example: "The castle is part of national heritage." },
+            { word: "prehistoric", type: "adj", phonetic: "/ˌpriːhɪˈstɒrɪk/", meaning: "Tiền sử", example: "Prehistoric paintings were found in France." }
+        ]
+    },
+    9: {
+        title: "Unit 9: THE NATURAL WORLD",
+        words: [
+            { word: "biodiversity", type: "n", phonetic: "/ˌbaɪəʊdaɪˈvɜːsəti/", meaning: "Đa dạng sinh học", example: "Rainforests have high biodiversity." },
+            { word: "conservation", type: "n", phonetic: "/ˌkɒnsəˈveɪʃən/", meaning: "Sự bảo tồn", example: "Wildlife conservation is essential." },
+            { word: "ecosystem", type: "n", phonetic: "/ˈiːkəʊˌsɪstəm/", meaning: "Hệ sinh thái", example: "Pollution threatens the marine ecosystem." },
+            { word: "endangered", type: "adj", phonetic: "/ɪnˈdeɪndʒəd/", meaning: "Bị đe dọa, nguy cấp", example: "Tigers are an endangered species." },
+            { word: "habitat", type: "n", phonetic: "/ˈhæbɪtæt/", meaning: "Môi trường sống", example: "Deforestation destroys animal habitats." }
+        ]
+    },
+    10: {
+        title: "Unit 10: REACHING FOR THE SKIES",
+        words: [
+            { word: "astronaut", type: "n", phonetic: "/ˈæstrənɔːt/", meaning: "Phi hành gia", example: "The astronaut walked on the moon." },
+            { word: "atmosphere", type: "n", phonetic: "/ˈætməsfɪər/", meaning: "Khí quyển", example: "The Earth's atmosphere protects us." },
+            { word: "gravity", type: "n", phonetic: "/ˈɡrævəti/", meaning: "Trọng lực", example: "There is low gravity on Mars." },
+            { word: "orbit", type: "n", phonetic: "/ˈɔːbɪt/", meaning: "Quỹ đạo", example: "The satellite entered Earth's orbit." },
+            { word: "spacecraft", type: "n", phonetic: "/ˈspeɪskrɑːft/", meaning: "Tàu vũ trụ", example: "The spacecraft landed safely." }
+        ]
+    },
+    11: {
+        title: "Unit 11: DESIGN AND INNOVATION",
+        words: [
+            // Nouns
+            { word: "balcony", type: "n", phonetic: "/ˈbælkəni/", meaning: "Ban công", example: "She stepped out onto the balcony to enjoy the fresh air." },
+            { word: "brick", type: "n", phonetic: "/brɪk/", meaning: "Gạch", example: "The house was constructed with durable red bricks." },
+            { word: "building", type: "n", phonetic: "/ˈbɪldɪŋ/", meaning: "Tòa nhà, công trình", example: "That high-rise building was finished last year." },
+            { word: "ceiling", type: "n", phonetic: "/ˈsiːlɪŋ/", meaning: "Trần nhà", example: "The living room features a high ceiling with modern lights." },
+            { word: "concrete", type: "n", phonetic: "/ˈkɒŋkriːt/", meaning: "Bê tông", example: "The bridge is made of reinforced concrete." },
+            { word: "construction", type: "n", phonetic: "/kənˈstrʌkʃən/", meaning: "Sự xây dựng, ngành xây dựng", example: "Construction work on the new highway begins tomorrow." },
+            { word: "cottage", type: "n", phonetic: "/ˈkɒtɪdʒ/", meaning: "Nhà tranh, nhà quê nhỏ", example: "They stayed in a cozy cottage near the lake." },
+            { word: "design", type: "n", phonetic: "/dɪˈzaɪn/", meaning: "Bản thiết kế, kiểu dáng", example: "The architectural design won an international award." },
+            { word: "device", type: "n", phonetic: "/dɪˈvaɪs/", meaning: "Thiết bị, dụng cụ", example: "This electronic device tracks your daily fitness." },
+            { word: "elevator", type: "n", phonetic: "/ˈelɪveɪtər/", meaning: "Thang máy", example: "We took the elevator to the 20th floor." },
+            { word: "engineering", type: "n", phonetic: "/ˌendʒɪˈnɪərɪŋ/", meaning: "Ngành kỹ thuật, kỹ nghệ", example: "He is studying civil engineering at university." },
+            { word: "frame", type: "n", phonetic: "/freɪm/", meaning: "Khung, sườn", example: "The steel frame supports the heavy structure." },
+            { word: "gadget", type: "n", phonetic: "/ˈɡædʒɪt/", meaning: "Thiết bị/dụng cụ nhỏ tiện ích", example: "Kitchen gadgets make cooking much faster." },
+            { word: "housing", type: "n", phonetic: "/ˈhaʊzɪŋ/", meaning: "Nhà ở, việc cung cấp nhà ở", example: "The government invested heavily in affordable housing." },
+            { word: "innovation", type: "n", phonetic: "/ˌɪnəˈveɪʃən/", meaning: "Sự đổi mới, sáng kiến", example: "Technological innovation drives economic growth." },
+            { word: "invention", type: "n", phonetic: "/ɪnˈvenʃən/", meaning: "Phát minh", example: "The invention of the telephone revolutionized communication." },
+            { word: "landmark", type: "n", phonetic: "/ˈlændmɑːk/", meaning: "Địa danh nổi tiếng, mốc mớ", example: "The Eiffel Tower is an iconic landmark in Paris." },
+            { word: "lift shaft", type: "n", phonetic: "/lɪft ʃɑːft/", meaning: "Hố thang máy, giếng thang máy", example: "Workers installed safety barriers around the lift shaft." },
+            { word: "occupant", type: "n", phonetic: "/ˈɒkjəpənt/", meaning: "Cư dân, người sử dụng/ở", example: "All occupants were evacuated safely during the drill." },
+            { word: "platform", type: "n", phonetic: "/ˈplætfɔːm/", meaning: "Nền tảng, bục, sân ga", example: "The train pulled into platform 4 on time." },
+            { word: "quarry", type: "n", phonetic: "/ˈkwɒri/", meaning: "Mỏ đá", example: "Limestone is extracted from the local quarry." },
+            { word: "residence", type: "n", phonetic: "/ˈrezɪdəns/", meaning: "Nơi cư trú, dinh thự", example: "The presidential residence is guarded day and night." },
+            { word: "skyscraper", type: "n", phonetic: "/ˈskaɪˌskreɪpər/", meaning: "Tòa nhà cao tầng chọc trời", example: "New York is famous for its impressive skyscrapers." },
+            { word: "staircase", type: "n", phonetic: "/ˈsteəkeɪs/", meaning: "Cầu thang bộ", example: "They walked up the wooden staircase to the upper floor." },
+            { word: "steel", type: "n", phonetic: "/stiːl/", meaning: "Thép", example: "Steel beams are widely used in modern building design." },
+            { word: "storage", type: "n", phonetic: "/ˈstɔːrɪdʒ/", meaning: "Kho lưu trữ, sự lưu trữ", example: "There is ample storage space under the staircase." },
+            { word: "structure", type: "n", phonetic: "/ˈstrʌktʃər/", meaning: "Cấu trúc, công trình kiến trúc", example: "Engineers checked the stability of the structure." },
+            { word: "tension", type: "n", phonetic: "/ˈtenʃən/", meaning: "Sức căng, sự căng thẳng", example: "The cable system creates tension to hold the roof." },
+            { word: "timber", type: "n", phonetic: "/ˈtɪmbər/", meaning: "Gỗ xây dựng", example: "This cottage was crafted using local timber." },
+
+            // Adjectives
+            { word: "airy", type: "adj", phonetic: "/ˈeəri/", meaning: "Thoáng mát, lộng gió", example: "The apartment has large windows, making it light and airy." },
+            { word: "conventional", type: "adj", phonetic: "/kənˈvenʃənəl/", meaning: "Theo truyền thống, thông thường", example: "He prefers conventional building methods over modern ones." },
+            { word: "cosy", type: "adj", phonetic: "/ˈkəʊzi/", meaning: "Ấm cúng", example: "The fireplace keeps the living room warm and cosy." },
+            { word: "cramped", type: "adj", phonetic: "/kræmpt/", meaning: "Chật hẹp, tù túng", example: "They live in a cramped one-room apartment." },
+            { word: "curved", type: "adj", phonetic: "/kɜːvd/", meaning: "Cong, uốn cong", example: "The roof features a distinctive curved design." },
+            { word: "disposable", type: "adj", phonetic: "/dɪˈspəʊzəbl/", meaning: "Dùng một lần", example: "Avoid using disposable plastic cups to protect the environment." },
+            { word: "domestic", type: "adj", phonetic: "/dəˈmestɪk/", meaning: "Trong nước, nội địa / trong gia đình", example: "Domestic appliances have made housework much easier." },
+            { word: "exterior", type: "adj", phonetic: "/ɪkˈstɪəriər/", meaning: "Bên ngoài, ngoại thất", example: "The exterior walls are painted bright blue." },
+            { word: "functional", type: "adj", phonetic: "/ˈfʌŋkʃənəl/", meaning: "Hữu dụng, thực dụng", example: "The furniture is simple but highly functional." },
+            { word: "futuristic", type: "adj", phonetic: "/ˌfjuːtʃəˈrɪstɪk/", meaning: "Mang tính vị tương lai, hiện đại", example: "The museum's futuristic design attracts many tourists." },
+            { word: "high-rise", type: "adj", phonetic: "/ˈhaɪraɪz/", meaning: "Cao tầng", example: "High-rise buildings dominate the city skyline." },
+            { word: "innovative", type: "adj", phonetic: "/ˈɪnəvətɪv/", meaning: "Mang tính sáng tạo, đổi mới", example: "She presented an innovative solution to urban congestion." },
+            { word: "internal", type: "adj", phonetic: "/ɪnˈtɜːnəl/", meaning: "Bên trong, nội bộ", example: "The internal layout of the house was completely redesigned." },
+            { word: "mass-produced", type: "adj", phonetic: "/ˌmæsprəˈdjuːst/", meaning: "Sản xuất hàng loạt", example: "Mass-produced furniture is often cheaper but less unique." },
+            { word: "modern", type: "adj", phonetic: "/ˈmɒdən/", meaning: "Hiện đại", example: "The kitchen is equipped with modern appliances." },
+            { word: "multi-storey", type: "adj", phonetic: "/ˌmʌltiˈstɔːri/", meaning: "Nhiều tầng", example: "They built a new multi-storey car park near the mall." },
+            { word: "old-fashioned", type: "adj", phonetic: "/ˌəʊldˈfæʃənd/", meaning: "Lỗi thời, cổ hủ", example: "The house was decorated in an old-fashioned style." },
+            { word: "ornate", type: "adj", phonetic: "/ɔːˈneɪt/", meaning: "Trang trí công phu, hoa mỹ", example: "The palace gateway features ornate golden gates." },
+            { word: "prefabricated", type: "adj", phonetic: "/ˌpriːˈfæbrɪkeɪtɪd/", meaning: "Đúc sẵn, làm sẵn", example: "Prefabricated homes can be assembled in a few days." },
+            { word: "single-storey", type: "adj", phonetic: "/ˈsɪŋɡəl ˈstɔːri/", meaning: "Một tầng", example: "They live in a single-storey bungalow near the coast." },
+            { word: "spacious", type: "adj", phonetic: "/ˈspeɪʃəs/", meaning: "Rộng rãi", example: "The villa offers a spacious living room and garden." },
+            { word: "state-of-the-art", type: "adj", phonetic: "/ˌsteɪtəvðiːˈɑːt/", meaning: "Hiện đại nhất, tân tiến nhất", example: "The research lab boasts state-of-the-art equipment." },
+            { word: "traditional", type: "adj", phonetic: "/trəˈdɪʃənəl/", meaning: "Truyền thống", example: "They built the roof using traditional wooden tiles." },
+            { word: "two-storey", type: "adj", phonetic: "/ˈtuː stɔːri/", meaning: "Hai tầng", example: "A beautiful two-storey house stands on the hill." },
+            { word: "typical", type: "adj", phonetic: "/ˈtɪpɪkəl/", meaning: "Điển hình, tiêu biểu", example: "This design is typical of 19th-century architecture." },
+            { word: "ultra-modern", type: "adj", phonetic: "/ˌʌltrəˈmɒdən/", meaning: "Cực kỳ hiện đại", example: "The city center features ultra-modern glass skyscrapers." },
+
+            // Verbs
+            { word: "activate", type: "v", phonetic: "/ˈæktɪveɪt/", meaning: "Kích hoạt", example: "Press this green button to activate the system." },
+            { word: "automate", type: "v", phonetic: "/ˈɔːtəmeɪt/", meaning: "Tự động hóa", example: "Robots are used to automate manufacturing tasks." },
+            { word: "build", type: "v", phonetic: "/bɪld/", meaning: "Xây dựng", example: "They plan to build a new hospital in this area." },
+            { word: "condemn", type: "v", phonetic: "/kənˈdem/", meaning: "Tuyên bố nguy hiểm / lên án", example: "The unsafe building was condemned by inspectors." },
+            { word: "construct", type: "v", phonetic: "/kənˈstrʌkt/", meaning: "Xây dựng, kiến tạo", example: "Workers took two years to construct the stadium." },
+            { word: "decorate", type: "v", phonetic: "/ˈdekəreɪt/", meaning: "Trang trí", example: "They decided to decorate the living room with paintings." },
+            { word: "demolish", type: "v", phonetic: "/dɪˈmɒlɪʃ/", meaning: "Phá hủy, dỡ bỏ", example: "The old factory was demolished to build apartments." },
+            { word: "design", type: "v", phonetic: "/dɪˈzaɪn/", meaning: "Thiết kế", example: "An expert architect designed this sustainable house." },
+            { word: "develop", type: "v", phonetic: "/dɪˈveləp/", meaning: "Phát triển", example: "Engineers are developing eco-friendly materials." },
+            { word: "devise", type: "v", phonetic: "/dɪˈvaɪz/", meaning: "Nghĩ ra, sáng chế", example: "They devised a clever plan to solve the power issue." },
+            { word: "haul", type: "v", phonetic: "/hɔːl/", meaning: "Kéo, chở (vật nặng)", example: "Heavy trucks haul building supplies to the site." },
+            { word: "hoist", type: "v", phonetic: "/hɔɪst/", meaning: "Kéo lên, cẩu lên", example: "A crane was used to hoist steel girders into place." },
+            { word: "invent", type: "v", phonetic: "/ɪnˈvent/", meaning: "Phát minh", example: "Scientists worked hard to invent a new energy device." },
+            { word: "maintain", type: "v", phonetic: "/meɪnˈteɪn/", meaning: "Bảo trì, duy trì", example: "Regular servicing helps maintain the equipment." },
+            { word: "occupy", type: "v", phonetic: "/ˈɒkjəpaɪ/", meaning: "Chiếm giữ, ở", example: "Several offices occupy the upper floors of the building." },
+            { word: "reconstruct", type: "v", phonetic: "/ˌriːkənˈstrʌkt/", meaning: "Tái thiết, xây dựng lại", example: "Historians helped reconstruct the ancient fort." },
+            { word: "renovate", type: "v", phonetic: "/ˈrenəveɪt/", meaning: "Cải tạo, sửa sang", example: "They spent thousands to renovate the historic theater." },
+            { word: "support", type: "v", phonetic: "/səˈpɔːt/", meaning: "Nâng đỡ, chống đỡ", example: "Strong pillars support the weight of the roof." },
+            { word: "trigger", type: "v", phonetic: "/ˈtrɪɡər/", meaning: "Gây ra, kích hoạt", example: "Smoke can trigger the automated fire alarm system." }
+        ]
+    },
+    12: {
+        title: "Unit 12: INFORMATION TECHNOLOGY",
+        words: [
+            // Nouns
+            { word: "automatic pilot", type: "n", phonetic: "/ˌɔːtəmætɪk ˈpaɪlət/", meaning: "Chế độ lái tự động", example: "The airplane flew on automatic pilot across the ocean." },
+            { word: "computerisation", type: "n", phonetic: "/kəmˌpjuːtəraɪˈzeɪʃən/", meaning: "Sự tin học hóa, máy tính hóa", example: "The computerisation of medical records improved efficiency." },
+            { word: "connection", type: "n", phonetic: "/kəˈnekʃən/", meaning: "Kết nối", example: "A stable internet connection is required for online classes." },
+            { word: "data", type: "n", phonetic: "/ˈdeɪtə/", meaning: "Dữ liệu", example: "All client data is encrypted for security purposes." },
+            { word: "device", type: "n", phonetic: "/dɪˈvaɪs/", meaning: "Thiết bị", example: "Smart mobile devices have changed how we communicate." },
+            { word: "function", type: "n", phonetic: "/ˈfʌŋkʃən/", meaning: "Chức năng", example: "This app features a search function for fast navigation." },
+            { word: "gadget", type: "n", phonetic: "/ˈɡædʒɪt/", meaning: "Dụng cụ công nghệ", example: "He loves collecting the latest high-tech gadgets." },
+            { word: "the Internet", type: "n", phonetic: "/ði ˈɪntənet/", meaning: "Mạng Internet", example: "Information is easily accessible via the Internet." },
+            { word: "keyboard", type: "n", phonetic: "/ˈkiːbɔːd/", meaning: "Bàn phím", example: "She typed the report quickly on her mechanical keyboard." },
+            { word: "keypad", type: "n", phonetic: "/ˈkiːpæd/", meaning: "Bàn phím nhỏ (trên điện thoại/mã khóa)", example: "Enter your PIN code on the keypad to unlock." },
+            { word: "laptop (computer)", type: "n", phonetic: "/ˈlæptɒp/", meaning: "Máy tính xách tay", example: "He took his laptop computer to the local coffee shop." },
+            { word: "the latest", type: "n", phonetic: "/ðə ˈleɪtɪst/", meaning: "Cái mới nhất, xu hướng mới nhất", example: "This smartphone model is the latest in mobile tech." },
+            { word: "memory", type: "n", phonetic: "/ˈmeməri/", meaning: "Bộ nhớ", example: "My computer ran out of memory while loading the game." },
+            { word: "monitor", type: "n", phonetic: "/ˈmɒnɪtər/", meaning: "Màn hình hiển thị", example: "He works with dual high-definition monitors." },
+            { word: "patent", type: "n", phonetic: "/ˈpeɪtənt/", meaning: "Bằng sáng chế", example: "The tech company applied for a patent on its new sensor." },
+            { word: "program", type: "n", phonetic: "/ˈprəʊɡræm/", meaning: "Chương trình máy tính", example: "She wrote a software program to automate file backups." },
+            { word: "prototype", type: "n", phonetic: "/ˈprəʊtətaɪp/", meaning: "Mẫu thử nghiệm đầu tiên", example: "Engineers built a working prototype of the drone." },
+            { word: "remote control", type: "n", phonetic: "/rɪˈməʊt kənˈtrəʊl/", meaning: "Điều khiển từ xa", example: "Where did you put the remote control for the TV?" },
+            { word: "silicon chip", type: "n", phonetic: "/ˈsɪlɪkən tʃɪp/", meaning: "Chip vi xử lý silicon", example: "A silicon chip powers processing in smart devices." },
+            { word: "technology", type: "n", phonetic: "/tekˈnɒlədʒi/", meaning: "Công nghệ", example: "Modern technology has transformed our daily lives." },
+            { word: "telecommunications", type: "n", phonetic: "/ˌtelikəmjuːnɪˈkeɪʃənz/", meaning: "Viễn thông", example: "The telecommunications industry is growing rapidly." },
+            { word: "vision", type: "n", phonetic: "/ˈvɪʒən/", meaning: "Tầm nhìn", example: "The CEO presented a bold vision for the digital future." },
+            { word: "wireless connection", type: "n", phonetic: "/ˈwaɪələs kəˈnekʃən/", meaning: "Kết nối không dây", example: "The office offers a fast wireless connection for visitors." },
+
+            // Adjectives
+            { word: "compact", type: "adj", phonetic: "/ˈkɒmpækt/", meaning: "Nhỏ gọn", example: "This camera is compact enough to fit in your pocket." },
+            { word: "computerised", type: "adj", phonetic: "/kəmˈpjuːtəraɪzd/", meaning: "Được tin học hóa, điều khiển bởi máy tính", example: "The factory uses a fully computerised assembly line." },
+            { word: "cutting-edge", type: "adj", phonetic: "/ˌkʌtɪŋˈedʒ/", meaning: "Tiên tiến, mới nhất", example: "They conduct research using cutting-edge tools." },
+            { word: "cyber", type: "adj", phonetic: "/ˈsaɪbər/", meaning: "Liên quan đến mạng/không gian mạng", example: "Companies invest heavily in cyber security measures." },
+            { word: "dated", type: "adj", phonetic: "/ˈdeɪtɪd/", meaning: "Lỗi thời, cũ kỹ", example: "That operating system looks quite dated today." },
+            { word: "digital", type: "adj", phonetic: "/ˈdɪdʒɪtəl/", meaning: "Kỹ thuật số", example: "Digital media has largely replaced traditional print." },
+            { word: "labour-saving", type: "adj", phonetic: "/ˈleɪbəˌseɪvɪŋ/", meaning: "Tiết kiệm sức lao động", example: "Robotic vacuums are popular labour-saving devices." },
+            { word: "portable", type: "adj", phonetic: "/ˈpɔːtəbl/", meaning: "Có thể mang theo, di động", example: "A portable power bank is handy when traveling." },
+            { word: "state-of-the-art", type: "adj", phonetic: "/ˌsteɪtəvðiːˈɑːt/", meaning: "Hiện đại nhất", example: "The center provides state-of-the-art computing facilities." },
+            { word: "up-to-date", type: "adj", phonetic: "/ˌʌptəˈdeɪt/", meaning: "Cập nhật, mới nhất", example: "Always keep your antivirus software up-to-date." },
+            { word: "user-friendly", type: "adj", phonetic: "/ˌjuːzəˈfrendli/", meaning: "Thân thiện với người dùng", example: "The app features a user-friendly navigation menu." },
+            { word: "virtual", type: "adj", phonetic: "/ˈvɜːtʃuəl/", meaning: "Ảo, trên mạng", example: "They held a virtual conference with global team members." },
+
+            // Verbs
+            { word: "access", type: "v", phonetic: "/ˈækses/", meaning: "Truy cập", example: "Users can access their account details online." },
+            { word: "connect", type: "v", phonetic: "/kəˈnekt/", meaning: "Kết nối", example: "Connect your device to Wi-Fi to download updates." },
+            { word: "download", type: "v", phonetic: "/ˌdaʊnˈləʊd/", meaning: "Tải về", example: "You can download the PDF document from the website." },
+            { word: "display", type: "v", phonetic: "/dɪˈspleɪ/", meaning: "Hiển thị", example: "The monitor will display real-time system metrics." },
+            { word: "envisage", type: "v", phonetic: "/ɪnˈvɪzɪdʒ/", meaning: "Hình dung, dự tưởng", example: "Experts envisage a world powered by clean energy." },
+            { word: "operate", type: "v", phonetic: "/ˈɒpəreɪt/", meaning: "Vận hành, hoạt động", example: "Learn how to operate the machinery safely." },
+            { word: "revolutionise", type: "v", phonetic: "/ˌrevəˈluːʃənaɪz/", meaning: "Cách mạng hóa", example: "AI technology will revolutionise modern healthcare." },
+            { word: "scroll", type: "v", phonetic: "/skrəʊl/", meaning: "Cuộn trang", example: "Scroll down to read the full terms and conditions." },
+            { word: "speculate", type: "v", phonetic: "/ˈspekjəleɪt/", meaning: "Dự đoán, suy đoán", example: "Analysts speculate that tech stocks will continue to rise." },
+            { word: "store", type: "v", phonetic: "/stɔːr/", meaning: "Lưu trữ", example: "Cloud services allow users to store large video files." },
+            { word: "surpass", type: "v", phonetic: "/səˈpɑːs/", meaning: "Vượt qua, vượt trội", example: "The new processor speed will surpass previous models." },
+
+            // Adverbs
+            { word: "automatically", type: "adv", phonetic: "/ˌɔːtəˈmætɪkli/", meaning: "Tự động", example: "Files are automatically saved every five minutes." }
+        ]
+    },
+    13: {
+        title: "Unit 13: THE MODERN WORLD",
+        words: [
+            // Nouns
+            { word: "attitude", type: "n", phonetic: "/ˈætɪtjuːd/", meaning: "Thái độ, quan điểm", example: "Her positive attitude towards change helped her succeed." },
+            { word: "brand", type: "n", phonetic: "/brænd/", meaning: "Thương hiệu", example: "This tech brand is recognized all over the world." },
+            { word: "culture", type: "n", phonetic: "/ˈkʌltʃər/", meaning: "Văn hóa", example: "Learning a language helps you understand another culture." },
+            { word: "cycle", type: "n", phonetic: "/ˈsaɪkəl/", meaning: "Chu kỳ, chu trình", example: "The economic cycle experiences periods of growth and slump." },
+            { word: "demographics", type: "n", phonetic: "/ˌdeməˈɡræfɪks/", meaning: "Nhân khẩu học", example: "Marketers analyze demographics to target young buyers." },
+            { word: "development", type: "n", phonetic: "/dɪˈveləpmənt/", meaning: "Sự phát triển", example: "Economic development has raised standard of living." },
+            { word: "diversity", type: "n", phonetic: "/daɪˈvɜːsəti/", meaning: "Sự đa dạng", example: "Cultural diversity enriches community life." },
+            { word: "globalisation", type: "n", phonetic: "/ˌɡləʊbəlaɪˈzeɪʃən/", meaning: "Toàn cầu hóa", example: "Globalisation has connected markets across continents." },
+            { word: "hindsight", type: "n", phonetic: "/ˈhaɪndsaɪt/", meaning: "Sự nhận thức sau khi sự việc đã xảy ra", example: "In hindsight, we should have made a different decision." },
+            { word: "icon", type: "n", phonetic: "/ˈaɪkɒn/", meaning: "Biểu tượng", example: "The smartphone became a cultural icon of the 21st century." },
+            { word: "identity", type: "n", phonetic: "/aɪˈdentəti/", meaning: "Bản sắc, danh tính", example: "Maintaining national identity is important to many societies." },
+            { word: "implication", type: "n", phonetic: "/ˌɪmplɪˈkeɪʃən/", meaning: "Hệ quả, tác động kéo theo", example: "We must consider the ethical implications of AI." },
+            { word: "impact", type: "n", phonetic: "/ˈɪmpækt/", meaning: "Tác động, ảnh hưởng", example: "Social media has a huge impact on youth culture." },
+            { word: "increase", type: "n", phonetic: "/ɪnˈkriːs/", meaning: "Sự gia tăng", example: "There was a sharp increase in online retail sales." },
+            { word: "influence", type: "n", phonetic: "/ˈɪnfluəns/", meaning: "Sự ảnh hưởng", example: "Peer influence plays a major role in fashion trends." },
+            { word: "industry", type: "n", phonetic: "/ˈɪndəstri/", meaning: "Ngành công nghiệp", example: "The tourism industry suffered losses during the pandemic." },
+            { word: "isolation", type: "n", phonetic: "/ˌaɪsəˈleɪʃən/", meaning: "Sự cô lập, sự cách ly", example: "Social isolation can affect mental wellbeing." },
+            { word: "joint venture", type: "n", phonetic: "/ˌdʒɔɪnt ˈventʃər/", meaning: "Dự án liên doanh", example: "Two giant firms formed a joint venture to build solar panels." },
+            { word: "(have a) monopoly", type: "n", phonetic: "/məˈnɒpəli/", meaning: "Sự độc quyền", example: "The company holds a monopoly on regional water distribution." },
+            { word: "market", type: "n", phonetic: "/ˈmɑːkɪt/", meaning: "Thị trường", example: "Global market trends change at a rapid pace." },
+            { word: "modernisation", type: "n", phonetic: "/ˌmɒdənaɪˈzeɪʃən/", meaning: "Sự hiện đại hóa", example: "Modernisation of public services saved taxpayer money." },
+            { word: "multiculturalism", type: "n", phonetic: "/ˌmʌltiˈkʌltʃərəlɪzəm/", meaning: "Chủ nghĩa đa văn hóa", example: "Metropolitan cities thrive on multiculturalism." },
+            { word: "percentage", type: "n", phonetic: "/pəˈsentɪdʒ/", meaning: "Tỷ lệ phần trăm", example: "A high percentage of citizens hold university degrees." },
+            { word: "population", type: "n", phonetic: "/ˌpɒpjəˈleɪʃən/", meaning: "Dân số", example: "The global population passed eight billion people." },
+            { word: "prediction", type: "n", phonetic: "/prɪˈdɪkʃən/", meaning: "Dự đoán", example: "His economic prediction turned out to be accurate." },
+            { word: "projection", type: "n", phonetic: "/prəˈdʒekʃən/", meaning: "Sự dự báo, ước tính", example: "Current projections show steady population growth." },
+            { word: "proportion", type: "n", phonetic: "/prəˈpɔːʃən/", meaning: "Tỷ lệ, phần tương ứng", example: "A large proportion of young adults live in urban areas." },
+            { word: "rate", type: "n", phonetic: "/reɪt/", meaning: "Tỷ lệ, tốc độ", example: "The inflation rate dropped significantly this quarter." },
+            { word: "statistics", type: "n", phonetic: "/stəˈtɪstɪks/", meaning: "Số liệu thống kê", example: "Recent statistics indicate a surge in green energy use." },
+            { word: "trend", type: "n", phonetic: "/trend/", meaning: "Xu hướng", example: "Working from home has become a major global trend." },
+
+            // Adjectives
+            { word: "ageing", type: "adj", phonetic: "/ˈeɪdʒɪŋ/", meaning: "Đang lão hóa, già đi", example: "Many developed nations face an ageing population." },
+            { word: "current", type: "adj", phonetic: "/ˈkʌrənt/", meaning: "Hiện tại", example: "What is your current employment status?" },
+            { word: "demographic", type: "adj", phonetic: "/ˌdeməˈɡræfɪk/", meaning: "Thuộc nhân khẩu học", example: "Demographic changes alter consumer demand." },
+            { word: "elderly", type: "adj", phonetic: "/ˈeldəli/", meaning: "Lớn tuổi, cao tuổi", example: "Community care centers support elderly residents." },
+            { word: "ethnic", type: "adj", phonetic: "/ˈeθnɪk/", meaning: "Thuộc dân tộc", example: "The city celebrates its diverse ethnic heritage." },
+            { word: "exotic", type: "adj", phonetic: "/ɪɡˈzɒtɪk/", meaning: "Ngoại nhập, kỳ lạ độc đáo", example: "They traveled to exotic tropical islands." },
+            { word: "global", type: "adj", phonetic: "/ˈɡləʊbəl/", meaning: "Toàn cầu", example: "Climate change is a global challenge requiring action." },
+            { word: "local", type: "adj", phonetic: "/ˈləʊkəl/", meaning: "Địa phương", example: "Support local businesses by shopping nearby." },
+            { word: "long-term", type: "adj", phonetic: "/ˌlɒŋˈtɜːm/", meaning: "Dài hạn", example: "We need a long-term strategy for economic growth." },
+            { word: "mid-term", type: "adj", phonetic: "/ˌmɪdˈtɜːm/", meaning: "Trung hạn", example: "They set mid-term targets for carbon reduction." },
+            { word: "multicultural", type: "adj", phonetic: "/ˌmʌltiˈkʌltʃərəl/", meaning: "Đa văn hóa", example: "Toronto is known as a vibrant multicultural city." },
+            { word: "productive", type: "adj", phonetic: "/prəˈdʌktɪv/", meaning: "Năng suất, hiệu quả", example: "We had a highly productive business meeting." },
+            { word: "sceptical", type: "adj", phonetic: "/ˈskeptɪkəl/", meaning: "Hoài nghi", example: "He remains sceptical about the new economic policy." },
+            { word: "short-term", type: "adj", phonetic: "/ˌʃɔːtˈtɜːm/", meaning: "Ngắn hạn", example: "Short-term gains should not compromise long-term safety." },
+            { word: "subsequent", type: "adj", phonetic: "/ˈsʌbsɪkwənt/", meaning: "Xảy ra sau, tiếp theo", example: "Subsequent studies confirmed the original findings." },
+            { word: "wealthy", type: "adj", phonetic: "/ˈwelθi/", meaning: "Giàu có", example: "Wealthy investors funded the green infrastructure project." },
+            { word: "worldwide", type: "adj", phonetic: "/ˌwɜːldˈwaɪd/", meaning: "Rộng khắp thế giới", example: "The movie achieved worldwide critical acclaim." },
+
+            // Verbs
+            { word: "compound", type: "v", phonetic: "/kəmˈpaʊnd/", meaning: "Làm trầm trọng thêm, phao trộn", example: "Delays will only compound existing financial problems." },
+            { word: "contribute", type: "v", phonetic: "/kənˈtrɪbjuːt/", meaning: "Đóng góp", example: "Every citizen can contribute to environmental protection." },
+            { word: "decline", type: "v", phonetic: "/dɪˈklaɪn/", meaning: "Suy giảm, từ chối", example: "Birth rates continue to decline in urban areas." },
+            { word: "diminish", type: "v", phonetic: "/dɪˈmɪnɪʃ/", meaning: "Giảm bớt, làm suy giảm", example: "Nothing could diminish her enthusiasm for learning." },
+            { word: "dominate", type: "v", phonetic: "/ˈdɒmɪneɪt/", meaning: "Thống trị, chi phối", example: "Major tech giants dominate the online search market." },
+            { word: "dwindle", type: "v", phonetic: "/ˈdwɪndəl/", meaning: "Sụt giảm dần, nhỏ lại", example: "Natural gas reserves began to dwindle in winter." },
+            { word: "factor", type: "v", phonetic: "/ˈfæktər/", meaning: "Tính đến, đưa vào tính toán", example: "We must factor in shipping costs before setting prices." },
+            { word: "indicate", type: "v", phonetic: "/ˈɪndɪkeɪt/", meaning: "Chỉ ra, cho thấy", example: "Survey results indicate high user satisfaction." },
+            { word: "merge", type: "v", phonetic: "/mɜːdʒ/", meaning: "Sáp nhập, hợp nhất", example: "The two telecom corporations decided to merge." },
+            { word: "migrate", type: "v", phonetic: "/maɪˈɡreɪt/", meaning: "Di cư", example: "Many young workers migrate to big cities for jobs." }
+        ]
+    },
+    14: {
+        title: "Unit 14: URBANISATION",
+        words: [
+            // Nouns
+            { word: "benefit", type: "n", phonetic: "/ˈbenɪfɪt/", meaning: "Lợi ích", example: "Better public transit is a huge benefit of urban living." },
+            { word: "challenge", type: "n", phonetic: "/ˈtʃælɪndʒ/", meaning: "Thách thức", example: "Managing city waste is a major urban challenge." },
+            { word: "compromise", type: "n", phonetic: "/ˈkɒmprəmaɪz/", meaning: "Sự thỏa hiệp", example: "Reaching a compromise helped resolve the dispute." },
+            { word: "difficulty", type: "n", phonetic: "/ˈdɪfɪkəlti/", meaning: "Khó khăn", example: "Migrants often face language difficulty in new cities." },
+            { word: "dilemma", type: "n", phonetic: "/dɪˈlemə/", meaning: "Thế tiến thoái lưỡng nan", example: "Planners face a dilemma between housing and green space." },
+            { word: "inhabitant", type: "n", phonetic: "/ɪnˈhæbɪtənt/", meaning: "Cư dân", example: "City inhabitants enjoy access to cultural events." },
+            { word: "infrastructure", type: "n", phonetic: "/ˈɪnfrəstrʌktʃər/", meaning: "Hạ tầng cơ sở", example: "Investment in modern infrastructure boosts trade." },
+            { word: "isolation", type: "n", phonetic: "/ˌaɪsəˈleɪʃən/", meaning: "Sự cô lập", example: "Elderly city dwellers may experience social isolation." },
+            { word: "issue", type: "n", phonetic: "/ˈɪʃuː/", meaning: "Vấn đề", example: "Air quality remains a critical issue in megacities." },
+            { word: "megacity", type: "n", phonetic: "/ˈmeɡəsɪti/", meaning: "Siêu đô thị (trên 10 triệu dân)", example: "Tokyo is one of the world's largest megacities." },
+            { word: "migrant", type: "n", phonetic: "/ˈmaɪɡrənt/", meaning: "Người di cư", example: "Migrant workers contribute to city construction." },
+            { word: "obstacle", type: "n", phonetic: "/ˈɒbstəkəl/", meaning: "Trở ngại, chướng ngại vật", example: "Lack of funding is the main obstacle to development." },
+            { word: "overpopulation", type: "n", phonetic: "/ˌəʊvəˌpɒpjəˈleɪʃən/", meaning: "Sự bùng nổ / quá tải dân số", example: "Overpopulation strain municipal sanitation systems." },
+            { word: "population", type: "n", phonetic: "/ˌpɒpjəˈleɪʃən/", meaning: "Dân số", example: "The urban population grows by thousands each month." },
+            { word: "poverty", type: "n", phonetic: "/ˈpɒvəti/", meaning: "Sự nghèo đói", example: "Urban initiatives aim to reduce poverty in slums." },
+            { word: "resolution", type: "n", phonetic: "/ˌrezəˈluːʃən/", meaning: "Giải pháp, sự giải quyết", example: "They passed a resolution to upgrade city water systems." },
+            { word: "setback", type: "n", phonetic: "/ˈsetbæk/", meaning: "Trở ngại, sự lùi bước", example: "Heavy rain caused a temporary setback in construction." },
+            { word: "slum", type: "n", phonetic: "/slʌm/", meaning: "Khu ổ chuột", example: "Governments work to rehouse residents living in slums." },
+            { word: "solution", type: "n", phonetic: "/səˈluːʃən/", meaning: "Giải pháp", example: "Electric buses provide a clean transit solution." },
+            { word: "tolerance", type: "n", phonetic: "/ˈtɒlərəns/", meaning: "Sự bao dung, lòng khoan dung", example: "Living in diverse cities fosters social tolerance." },
+            { word: "traffic", type: "n", phonetic: "/ˈtræfɪk/", meaning: "Giao thông", example: "Heavy traffic causes severe delays during rush hour." },
+            { word: "urbanisation", type: "n", phonetic: "/ˌɜːbənaɪˈzeɪʃən/", meaning: "Đô thị hóa", example: "Rapid urbanisation changes rural landscapes worldwide." },
+
+            // Adjectives
+            { word: "adequate", type: "adj", phonetic: "/ˈædɪkwət/", meaning: "Đầy đủ, thỏa đáng", example: "The housing project ensures adequate water supply." },
+            { word: "basic", type: "adj", phonetic: "/ˈbeɪsɪk/", meaning: "Cơ bản", example: "Access to clean water is a basic human right." },
+            { word: "booming", type: "adj", phonetic: "/ˈbuːmɪŋ/", meaning: "Bùng nổ, phát triển nhanh", example: "The tech sector is booming in metropolitan areas." },
+            { word: "catastrophic", type: "adj", phonetic: "/ˌkætəˈstrɒfɪk/", meaning: "Thảm khốc", example: "Unchecked flooding can have catastrophic consequences." },
+            { word: "crowded", type: "adj", phonetic: "/ˈkraʊdɪd/", meaning: "Đông đúc", example: "Subway trains are extremely crowded at 8 AM." },
+            { word: "decent", type: "adj", phonetic: "/ˈdiːsənt/", meaning: "Tốt, đàng hoàng, tươm tất", example: "Everyone deserves access to decent housing." },
+            { word: "developing", type: "adj", phonetic: "/dɪˈveləpɪŋ/", meaning: "Đang phát triển", example: "Urbanisation happens rapidly in developing nations." },
+            { word: "double-edged", type: "adj", phonetic: "/ˌdʌblˈedʒd/", meaning: "Con dao 2 lưỡi", example: "Fast industrial growth is a double-edged sword." },
+            { word: "isolated", type: "adj", phonetic: "/ˈaɪsəleɪtɪd/", meaning: "Bị cô lập, biệt lập", example: "Rural villages often feel isolated from central services." },
+            { word: "one-sided", type: "adj", phonetic: "/ˌwʌnˈsaɪdɪd/", meaning: "Phiến diện, một chiều", example: "The media gave a one-sided view of urban issues." },
+            { word: "long-sighted", type: "adj", phonetic: "/ˌlɒŋˈsaɪtɪd/", meaning: "Nhìn xa trông rộng", example: "Long-sighted city planning prevents future traffic congestion." },
+            { word: "long-term", type: "adj", phonetic: "/ˌlɒŋˈtɜːm/", meaning: "Dài hạn", example: "Investing in education brings long-term benefits." },
+            { word: "overpriced", type: "adj", phonetic: "/ˌəʊvəˈpraɪst/", meaning: "Quá đắt, hét giá", example: "Apartments in the downtown core are severely overpriced." },
+            { word: "overworked", type: "adj", phonetic: "/ˌəʊvəˈwɜːkt/", meaning: "Làm việc quá sức", example: "Medical staff in city hospitals are often overworked." },
+            { word: "pressing", type: "adj", phonetic: "/ˈpresɪŋ/", meaning: "Cấp bách, khẩn thiết", example: "Housing shortage is a pressing issue in major cities." },
+            { word: "rural", type: "adj", phonetic: "/ˈrʊərəl/", meaning: "Thuộc nông thôn", example: "Many young people leave rural areas for urban job opportunities." },
+            { word: "short-sighted", type: "adj", phonetic: "/ˌʃɔːtˈsaɪtɪd/", meaning: "Thẩn thờ, ngắn tầm nhìn", example: "Cutting tree cover is a short-sighted urban policy." },
+            { word: "short-term", type: "adj", phonetic: "/ˌʃɔːtˈtɜːm/", meaning: "Ngắn hạn", example: "Emergency shelters offer a short-term solution for homeless." },
+            { word: "staggering", type: "adj", phonetic: "/ˈstæɡərɪŋ/", meaning: "Gây kinh ngạc, sững sờ", example: "The cost of urban infrastructure repairs is staggering." },
+            { word: "tolerant", type: "adj", phonetic: "/ˈtɒlərəns/", meaning: "Khoan dung, chấp nhận sự khác biệt", example: "Metropolitan citizens tend to be tolerant of diverse lifestyles." },
+
+            // Verbs
+            { word: "address", type: "v", phonetic: "/əˈdres/", meaning: "Giải quyết, xử lý", example: "City leaders met to address pollution concerns." },
+            { word: "adjust", type: "v", phonetic: "/əˈdʒʌst/", meaning: "Điều chỉnh, thích nghi", example: "New migrants take time to adjust to city life." },
+            { word: "aggravate", type: "v", phonetic: "/ˈæɡrəveɪt/", meaning: "Làm trầm trọng thêm", example: "Heavy rain will aggravate existing traffic problems." },
+            { word: "cause", type: "v", phonetic: "/kɔːz/", meaning: "Gây ra", example: "Rapid expansion can cause environmental damage." },
+            { word: "compete", type: "v", phonetic: "/kəmˈpiːt/", meaning: "Cạnh tranh", example: "Job seekers compete fiercely in large cities." },
+            { word: "compound", type: "v", phonetic: "/kəmˈpaʊnd/", meaning: "Làm tệ thêm", example: "Poor drainage will compound urban flood risks." },
+            { word: "deal with", type: "v", phonetic: "/diːl wɪð/", meaning: "Đối phó, xử lý", example: "Municipal councils must deal with waste disposal daily." },
+            { word: "deteriorate", type: "v", phonetic: "/dɪˈtɪəriəreɪt/", meaning: "Xấu đi, xuống cấp", example: "Air quality deteriorates during summer heatwaves." },
+            { word: "enhance", type: "v", phonetic: "/ɪnˈhɑːns/", meaning: "Nâng cao, cải thiện", example: "Adding green parks helps enhance life quality." },
+            { word: "exacerbate", type: "v", phonetic: "/ɪɡˈzæsəbeɪt/", meaning: "Làm trầm trọng thêm, tệ đi", example: "Lack of public transport exacerbates traffic jams." },
+            { word: "exclude", type: "v", phonetic: "/ɪkˈskluːd/", meaning: "Loại trừ, loại bỏ", example: "Urban planners must not exclude low-income families." },
+            { word: "face", type: "v", phonetic: "/feɪs/", meaning: "Đối mặt", example: "Megacities face huge environmental challenges." },
+            { word: "flourish", type: "v", phonetic: "/ˈflʌrɪʃ/", meaning: "Phát triển rực rỡ, hưng thịnh", example: "Small retail businesses flourish near transit hubs." },
+            { word: "identify", type: "v", phonetic: "/aɪˈdentɪfaɪ/", meaning: "Xác định, nhận dạng", example: "Surveyors identified areas needing infrastructural repair." },
+            { word: "improve", type: "v", phonetic: "/ɪmˈpruːv/", meaning: "Cải thiện", example: "New roads will improve traffic flow considerably." },
+            { word: "include", type: "v", phonetic: "/ɪnˈkluːd/", meaning: "Bao gồm", example: "Smart city plans include renewable energy sources." },
+            { word: "linger", type: "v", phonetic: "/ˈlɪŋɡər/", meaning: "Kéo dài, đọng lại", example: "Smog can linger over industrial cities for days." },
+            { word: "modify", type: "v", phonetic: "/ˈmɒdɪfaɪ/", meaning: "Sửa đổi, điều chỉnh", example: "Engineers modified the bridge design for safety." },
+            { word: "overcome", type: "v", phonetic: "/ˌəʊvəˈkʌm/", meaning: "Vượt qua", example: "Cities must overcome financial constraints." },
+            { word: "present", type: "v", phonetic: "/ˈprezənt/", meaning: "Trình bày, mang lại", example: "Urban development presents new business opportunities." },
+            { word: "raise", type: "v", phonetic: "/reɪz/", meaning: "Nâng cao, gây (quỹ)", example: "The campaign aims to raise environmental awareness." },
+            { word: "reform", type: "v", phonetic: "/rɪˈfɔːm/", meaning: "Cải cách", example: "They plan to reform local zoning regulations." },
+            { word: "regulate", type: "v", phonetic: "/ˈreɡjəleɪt/", meaning: "Quy định, điều tiết", example: "Laws are enacted to regulate factory emissions." },
+            { word: "remedy", type: "v", phonetic: "/ˈremədi/", meaning: "Khắc phục, sửa chữa", example: "Measures were introduced to remedy housing deficits." },
+            { word: "resolve", type: "v", phonetic: "/rɪˈzɒlv/", meaning: "Giải quyết", example: "Constructing bypass roads helped resolve traffic congestion." },
+            { word: "tackle", type: "v", phonetic: "/ˈtækəl/", meaning: "Giải quyết, xử lý", example: "Governments are acting to tackle urban poverty." },
+            { word: "tolerate", type: "v", phonetic: "/ˈtɒlərənt/", meaning: "Chịu đựng, tha thứ", example: "Citizens will not tolerate constant transit delays." },
+            { word: "transform", type: "v", phonetic: "/trænsˈfɔːm/", meaning: "Biến đổi", example: "Green projects can transform polluted industrial zones." },
+            { word: "worsen", type: "v", phonetic: "/ˈwɜːsən/", meaning: "Trở nên tồi tệ hơn", example: "Without action, urban air quality will worsen." },
+
+            // Verb phrases
+            { word: "find a solution", type: "phrase", phonetic: "/faɪnd ə səˈluːʃən/", meaning: "Tìm giải pháp", example: "Experts met to find a solution to urban overcrowding." },
+            { word: "overcome a difficulty", type: "phrase", phonetic: "/ˌəʊvəˈkʌm ə ˈdɪfɪkəlti/", meaning: "Vượt qua khó khăn", example: "With perseverance, the city overcame financial difficulties." }
+        ]
+    }
+};
+
+let currentUnit = 11;
+let currentTab = 1;
+let currentVocabList = [];
+let quizQuestions = [];
+let currentQuestionIndex = 0;
+let userScore = 0;
+
+// Speech Synthesis Setup
+function speakWord(text) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // Stop current speech if playing
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+    } else {
+        alert("Trình duyệt của bạn không hỗ trợ phát âm tự động Web Speech API.");
+    }
+}
+
+// Select Unit Handler
+function selectUnit(unitNum) {
+    currentUnit = unitNum;
+    
+    // Update active button
+    const buttons = document.querySelectorAll('.unit-btn');
+    buttons.forEach((btn, index) => {
+        if (btn.innerText.includes(`Unit ${unitNum}:`)) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // Reset search
+    document.getElementById('searchInput').value = '';
+
+    // Render corresponding view
+    if (currentTab === 1) {
+        renderVocabulary();
+    } else {
+        startQuiz();
+    }
+}
+
+// Switch Tab Handler
+function switchTab(tabNum) {
+    currentTab = tabNum;
+    const tab1Btn = document.getElementById('tab1Btn');
+    const tab2Btn = document.getElementById('tab2Btn');
+    const vocabTab = document.getElementById('vocabTab');
+    const quizTab = document.getElementById('quizTab');
+
+    if (tabNum === 1) {
+        tab1Btn.classList.add('active');
+        tab2Btn.classList.remove('active');
+        vocabTab.style.display = 'block';
+        quizTab.style.display = 'none';
+        renderVocabulary();
+    } else {
+        tab2Btn.classList.add('active');
+        tab1Btn.classList.remove('active');
+        vocabTab.style.display = 'none';
+        quizTab.style.display = 'block';
+        startQuiz();
+    }
+}
+
+// Render Vocabulary List
+function renderVocabulary() {
+    const grid = document.getElementById('vocabGrid');
+    const countDisplay = document.getElementById('vocabCount');
+    const unitData = vocabularyData[currentUnit];
+
+    if (!unitData || !unitData.words || unitData.words.length === 0) {
+        grid.innerHTML = `<div class="empty-msg">Chưa có dữ liệu từ vựng cho Unit này.</div>`;
+        countDisplay.innerText = "Tổng số: 0 từ vựng";
+        return;
+    }
+
+    currentVocabList = unitData.words;
+    displayCards(currentVocabList);
+}
+
+function displayCards(wordsList) {
+    const grid = document.getElementById('vocabGrid');
+    const countDisplay = document.getElementById('vocabCount');
+    countDisplay.innerText = `${vocabularyData[currentUnit].title} — Tổng số: ${wordsList.length} từ vựng`;
+
+    if (wordsList.length === 0) {
+        grid.innerHTML = `<div class="empty-msg">Không tìm thấy từ vựng phù hợp.</div>`;
+        return;
+    }
+
+    grid.innerHTML = wordsList.map(item => {
+        const typeClass = item.type.replace('.', '');
+        return `
+            <div class="vocab-card">
+                <div class="type-badge ${typeClass}">${item.type}</div>
+                <div class="card-content">
+                    <div class="word-title">${item.word}</div>
+                    <div class="phonetic">${item.phonetic}</div>
+                    <div class="meaning">${item.meaning}</div>
+                    <div class="example-box">💬 <strong>Ví dụ:</strong> ${item.example}</div>
+                </div>
+                <div class="card-footer">
+                    <button class="audio-btn" title="Phát âm từ này" onclick="speakWord('${item.word.replace(/'/g, "\'")}')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.74 2.5-2.26 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        </svg>
+                    </button>
+                    <span style="font-size:12px; color:#adb5bd; font-weight:600;">Ms Lê Hằng English</span>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Filter Vocabulary with Search
+function filterVocab() {
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    if (!vocabularyData[currentUnit]) return;
+    const filtered = vocabularyData[currentUnit].words.filter(item => 
+        item.word.toLowerCase().includes(query) || 
+        item.meaning.toLowerCase().includes(query)
+    );
+    displayCards(filtered);
+}
+
+// 6. QUIZ GENERATOR (30 QUESTIONS GENERATED dynamically)
+function startQuiz() {
+    const unitData = vocabularyData[currentUnit];
+    document.getElementById('quizUnitTitle').innerText = `Đề Thi Trắc Nghiệm - ${unitData.title}`;
+    
+    // Generate 30 Quiz Questions from current unit (or pooled if words < 30)
+    quizQuestions = generateQuestions(unitData.words, 30);
+    currentQuestionIndex = 0;
+    userScore = 0;
+    
+    showQuestion(currentQuestionIndex);
+}
+
+function generateQuestions(wordList, targetCount = 30) {
+    const questions = [];
+    const pool = [...wordList];
+
+    // If pool is smaller than 30, duplicate or pool with other units
+    let extendedPool = [...pool];
+    if (extendedPool.length < targetCount) {
+        Object.keys(vocabularyData).forEach(u => {
+            if (parseInt(u) !== currentUnit) {
+                extendedPool = extendedPool.concat(vocabularyData[u].words);
+            }
+        });
+    }
+
+    // Shuffle extended pool
+    extendedPool.sort(() => Math.random() - 0.5);
+
+    for (let i = 0; i < targetCount; i++) {
+        const targetWord = extendedPool[i % extendedPool.length];
+        
+        // Generate question types: 1 = En to Vi, 2 = Vi to En, 3 = Fill in the blank
+        const qType = (i % 3) + 1;
+        
+        // Pick 3 wrong distractor options
+        const distractors = extendedPool
+            .filter(w => w.word !== targetWord.word)
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 3);
+
+        if (qType === 1) {
+            // English -> Vietnamese
+            const options = [targetWord.meaning, ...distractors.map(d => d.meaning)].sort(() => Math.random() - 0.5);
+            questions.push({
+                question: `Từ "<strong>${targetWord.word}</strong>" (${targetWord.phonetic}) trong tiếng Việt có nghĩa là gì?`,
+                options: options,
+                answer: targetWord.meaning
+            });
+        } else if (qType === 2) {
+            // Vietnamese -> English
+            const options = [targetWord.word, ...distractors.map(d => d.word)].sort(() => Math.random() - 0.5);
+            questions.push({
+                question: `Nghĩa "<strong>${targetWord.meaning}</strong>" tương ứng với từ tiếng Anh nào dưới đây?`,
+                options: options,
+                answer: targetWord.word
+            });
+        } else {
+            // Fill in example blank
+            const maskedExample = targetWord.example.replace(new RegExp(targetWord.word, 'gi'), '_______');
+            const options = [targetWord.word, ...distractors.map(d => d.word)].sort(() => Math.random() - 0.5);
+            questions.push({
+                question: `Điền từ thích hợp vào chỗ trống:<br><em>"${maskedExample}"</em>`,
+                options: options,
+                answer: targetWord.word
+            });
+        }
+    }
+    return questions;
+}
+
+function showQuestion(index) {
+    const container = document.getElementById('quizContent');
+    const progressBar = document.getElementById('quizProgressBar');
+    const questionCount = document.getElementById('quizQuestionCount');
+
+    if (index >= quizQuestions.length) {
+        // Show Final Score
+        progressBar.style.width = '100%';
+        questionCount.innerText = `Hoàn thành ${quizQuestions.length} / ${quizQuestions.length}`;
+        container.innerHTML = `
+            <div class="score-board">
+                <h3>🎉 CHÚC MỪNG BẠN ĐÃ HOÀN THÀNH BÀI THI! 🎉</h3>
+                <p style="font-size: 20px; font-weight: 800; color: #212529; margin: 15px 0;">
+                    Điểm số của bạn: <span style="color: var(--accent-coral);">${userScore} / ${quizQuestions.length}</span>
+                </p>
+                <p style="color: #6c757d; font-weight: 600;">
+                    ${userScore >= 25 ? 'Cực kỳ xuất sắc! Bạn đã làm chủ lượng từ vựng này!' : 'Cố gắng lên nhé! Hãy ôn luyện lại thẻ từ vựng và làm lại bài test!'}
+                </p>
+                <button class="restart-btn" onclick="startQuiz()">🔄 Làm Bán Thi Lại</button>
+            </div>
+        `;
+        return;
+    }
+
+    const q = quizQuestions[index];
+    const progressPercent = ((index) / quizQuestions.length) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+    questionCount.innerText = `Câu ${index + 1} / ${quizQuestions.length}`;
+
+    container.innerHTML = `
+        <div class="question-card">
+            <div class="question-title">${index + 1}. ${q.question}</div>
+            <div class="options-grid">
+                ${q.options.map((opt, optIdx) => `
+                    <button class="option-btn" onclick="checkAnswer(this, '${opt.replace(/'/g, "\'")}', '${q.answer.replace(/'/g, "\'")}')">
+                        <strong>${String.fromCharCode(65 + optIdx)}.</strong> ${opt}
+                    </button>
+                `).join('')}
+            </div>
+        </div>
+        <div class="quiz-controls">
+            <span style="font-size: 14px; color: #868e96; font-weight: 700;">Điểm hiện tại: ${userScore}</span>
+            <button class="next-btn" id="nextBtn" style="display:none;" onclick="nextQuestion()">Câu Tiếp Theo ➔</button>
+        </div>
+    `;
+}
+
+function checkAnswer(btn, selected, correct) {
+    const buttons = document.querySelectorAll('.option-btn');
+    buttons.forEach(b => b.disabled = true);
+
+    if (selected === correct) {
+        btn.classList.add('correct');
+        userScore++;
+    } else {
+        btn.classList.add('wrong');
+        buttons.forEach(b => {
+            if (b.innerText.includes(correct)) {
+                b.classList.add('correct');
+            }
+        });
+    }
+
+    document.getElementById('nextBtn').style.display = 'block';
+}
+
+function nextQuestion() {
+    currentQuestionIndex++;
+    showQuestion(currentQuestionIndex);
+}
+
+// Initial Loading
+window.onload = function() {
+    renderVocabulary();
+};
+</script>
+</body>
+</html>
